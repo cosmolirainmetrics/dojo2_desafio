@@ -9,10 +9,11 @@ Dado("entrar na tela de cadastro") do
 end                                                                                   
                                                                                       
 Quando("cadastrar os dados {string}, {string}, {string}, {string}") do |assunto, contato, descricao, status|
+  @nome = assunto.upcase
   @cadastro.cadastrar(assunto, contato, descricao, status)               
 end                                                                                                                                                                       
                                                                                       
 Entao("enviar os dados") do                                                           
-  pending # Write code here that turns the phrase above into concrete actions         
+  expect(@cadastro.assunto_cadastro.text).to eq @nome
 end                                                                                   
                                                                                       

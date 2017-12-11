@@ -8,6 +8,6 @@ Dado("que eu selecione um registro") do
   end                                                                                                               
                                                                                                                     
   Entao("confirmar se os dados foram alterados com sucesso") do                                                     
-    pending # Write code here that turns the phrase above into concrete actions                                     
+    @editar.salvar_dados                    
   end                                                                                                               
                                                                                                                     

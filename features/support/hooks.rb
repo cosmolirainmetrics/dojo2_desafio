@@ -9,10 +9,11 @@ Before do
   @excluir = CadastroExcluir.new
 end
 
-# AfterStep do |scenario|
-  
-# end
+After do |scenario|
+  Dir.mkdir('reports') unless Dir.exists?('reports')
+  sufix =  ('error' if scenario.failed?) || 'sucess'
+  name = scenario.name.tr(' ', '_').downcase
 
-# After do
-  
-# end
+  page.save_screenshot("reports/#{sufix}-#{name}.png")
+  embed("reports/#{sufix}-#{name}.png", 'image/png', 'SCREENSHOT')
+end

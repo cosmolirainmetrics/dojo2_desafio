@@ -5,7 +5,7 @@ class CadastroEditar < SitePrism::Page
     element :status_select, "select[id='status']"
     element :filtro_btn, :xpath, '//*[@id="pagination"]/td/table/tbody/tr/td[1]/ul[3]/li/a', match: :first
     element :busca_btn, :xpath, '//*[@id="edit-102c00a9-ca2f-4bad-f511-59e74f3192d4"]'
-    element :bnt_save, :button, 'SAVE', match: :first
+    element :salvar_btn, :xpath, '//*[@id="SAVE"]', match: :first
     element :nomeEditado, 'h2.module-title-text'
 
     assunto = 'Nova Tarefa'
@@ -19,5 +19,9 @@ class CadastroEditar < SitePrism::Page
         data_vencimento_input.set(data_fim)
         descricao_text_area.set(descricao)
         status_select.select status
+    end
+
+    def salvar_dados
+        salvar_btn.click
     end
 end
